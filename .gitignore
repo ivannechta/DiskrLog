@@ -1,0 +1,13 @@
+DiskrLog/.*
+DiskrLog/packages/
+Sample-Test1/Debug/Sample-Test1.tlog/link.read.1.tlog
+Sample-Test1/Debug/
+Sample-Test1/packages.config
+DiskrLog/Debug/
+DiskrLog/DiskrLog.sln
+DiskrLog/DiskrLog.vcxproj
+DiskrLog/DiskrLog.vcxproj.filters
+DiskrLog/DiskrLog.vcxproj.user
+DiskrLog/packages.config
+Sample-Test1/Sample-Test1.vcxproj
+Sample-Test1/Sample-Test1.vcxproj.user
