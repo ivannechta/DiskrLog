@@ -71,6 +71,24 @@ public:
 		return *this;
 	}
 
+	Number operator >>(int b) { // 0011>>5 -> 11 ->11000, where b is num size
+		char* c = new char[b + 2];
+		bool errorFlag = true;
+		int k = 0;
+		while (k < b) {
+			if (digit[k] == 1) { errorFlag = false; break; }
+			k++;
+		}
+		if (k == b) throw 4; //num has 0 only
+
+		for (int i = 0; i < b; i++) {
+			c[i] = (i+k<size) ? digit[i+k]+'0': '0';
+		}
+		c[b] = 0;
+		return (Number(c));
+	}
+
+
 	int operator [](int i) { // Numeration from hiest digit (as in String): "01" -> Num[0]=0; 
 		if (size > i) return digit[i];
 		return -1;

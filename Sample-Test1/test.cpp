@@ -72,3 +72,18 @@
 		Number b("1111");
 		EXPECT_EQ((a + b) == Number("1111"), true);
 	}
+
+	TEST(Shift, Back) {
+		Number a("0011");
+		Number b("11000");
+		EXPECT_EQ( (a>>5)== Number("11000"), true);
+	}
+
+	TEST(Shift, Back_Zero) {
+		Number a("0000");		
+		ASSERT_THROW(a >> 5, int);		
+	}
+	TEST(Shift, Back_Trunc) {
+		Number a("1000");
+		EXPECT_EQ((a >> 3) == Number("100"), true);
+	}
