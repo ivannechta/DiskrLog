@@ -87,3 +87,40 @@
 		Number a("1000");
 		EXPECT_EQ((a >> 3) == Number("100"), true);
 	}
+
+	TEST(Assign, simple) {
+		Number a("0011");
+		Number b;
+		b = a;
+		EXPECT_EQ(b == a, true);
+	}
+	TEST(Assign, NonZero) {
+		Number a("0010");
+		Number b("1000");
+		b = a;
+		EXPECT_EQ(b == Number((char*)"0010"), true);
+	}
+
+	TEST(Compact, Compact) {
+		Number a("0011");		
+		-a;
+		EXPECT_EQ(a==Number("11"), true);
+
+		Number b("1011");
+		-b;
+		EXPECT_EQ(b == Number("1011"), true);
+
+		Number c("000");
+		-c;
+		EXPECT_EQ(c == Number("0"), true);
+
+		Number d("0");
+		-d;
+		EXPECT_EQ(d == Number("0"), true);
+
+		Number e("1");
+		-e;
+		EXPECT_EQ(e == Number("1"), true);
+
+	}
+

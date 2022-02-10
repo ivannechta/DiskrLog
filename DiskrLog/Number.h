@@ -15,6 +15,9 @@ public:
 	}
 //#pragma region Region_1
 //#pragma endregion Region_1
+	Number() {
+		size = 0; digit = NULL;
+	}
 
 	Number(char* c,int s=-1) {
 		if (c == NULL) throw 0;		
@@ -26,6 +29,18 @@ public:
 		{
 			digit[i] -= '0';
 		}
+	}
+	Number& operator=(Number b) {
+		if (size != 0)delete digit;
+		size = b.GetSize();
+		
+		digit = new char[size + 1];
+		for (int i = 0; i < size; i++)
+		{
+			digit[i] = b[i];
+		}
+		digit[size] = 0;
+		return (*this);
 	}
 
 	Number operator *(int newsize) { //add some 0 to the end
@@ -53,8 +68,17 @@ public:
 		return Number(c,size);
 	}
 
-	Number operator -(Number b) {
-
+	Number operator -() { //compact: 00011 ->11		
+		int offset = 0;
+		while ((digit[offset] == 0) && (offset < size - 1)) {
+			offset++;
+		}	
+		size -= offset;
+		for (int i = 0; i < size; i++) {
+			digit[i] = digit[i + offset];
+		}
+		digit[size] = 0;
+		return *this;
 	}
 
 	Number operator <<(int b) {
