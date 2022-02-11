@@ -10,7 +10,8 @@ public:
 		A = Number((char*)"1");
 		P = p;
 		Y = y;
-		Power = 0;	
+		-Y;
+		Power = -1;	
 	}
 
 	int Snosim() {
@@ -21,7 +22,13 @@ public:
 		return i;
 	}
 
-	void Divide() {		
+	void Divide() {
+		if (Y.GetSize() > P.GetSize())throw 7;
+		-Y;
+		if (Y == Number((char*)"0")) {
+			return;
+		}
+		Power++;
 
 		while (A != Y) {
 			if (A.GetSize()<P.GetSize()){ 
@@ -35,7 +42,7 @@ public:
 	}
 
 	inline int GetPower() {
-		return 1 + Power;
+		return Power;
 	}
 
 };

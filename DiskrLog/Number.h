@@ -7,8 +7,6 @@ private:
 	char* digit;
 	int size;
 public:
-
-
 	inline int GetSize()
 	{
 		return size;
@@ -43,7 +41,7 @@ public:
 		return (*this);
 	}
 
-	Number operator *(int newsize) { //add some 0 to the end
+	Number operator *(int newsize) { //add some 0 to the end: x=11; x*5 ->00011      
 		if (newsize <= size) return *this;
 		char* c = new char[newsize + 1];		
 		for (int i = 0; i < newsize-size; i++) {
@@ -58,7 +56,22 @@ public:
 		return *this;
 	}
 
-	Number operator +(Number b) {		
+	bool operator<(Number B) {
+		Number a;		
+		Number b; 
+		a = *this;
+		b = B;
+		int max = (a.GetSize() < b.GetSize()) ? b.GetSize() : a.GetSize();
+		a* max;
+		b* max;
+		for (int i = 0; i < max; i++) {
+			if (a[i] < b[i])return true;
+			if (a[i] > b[i])return false;
+		}		
+		return false;
+	}
+
+	Number operator +(Number b) { //Xor		
 		if (this->size != b.GetSize()) throw 1;
 		char* c = new char[size + 1]; 
 		c[size] = 0;
@@ -139,7 +152,7 @@ public:
 	void V() {
 		for (int i = 0; i < size; i++)
 		{
-			printf("%d",digit[i]);
+			printf("%d",(unsigned int)digit[i]);
 		}
 		printf("\n");	
 	}
